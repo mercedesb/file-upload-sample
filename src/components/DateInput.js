@@ -5,7 +5,7 @@ import "react-day-picker/lib/style.css";
 import PropTypes from "prop-types";
 
 export function DateInput({ name, value, onChange }) {
-  const DATE_FORMAT = "MM-DD-YYYY";
+  const DATE_FORMAT = "MM/DD/YYYY";
 
   const handleChange = (day) => {
     onChange(formatDate(day, DATE_FORMAT));

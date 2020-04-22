@@ -12,7 +12,7 @@ let onChange;
 describe("DateInput", () => {
   beforeEach(() => {
     name = "test";
-    value = "04-22-2020";
+    value = "04/22/2020";
     onChange = jest.fn();
     subject = shallow(
       <DateInput name={name} value={value} onChange={onChange} />
@@ -37,13 +37,13 @@ describe("DateInput", () => {
 
     beforeEach(() => {
       name = "test";
-      value = "04-22-2020";
+      value = "04/22/2020";
       onChange = jest.fn();
       subject = mount(
         <DateInput name={name} value={value} onChange={onChange} />
       );
 
-      newValue = "03-07-2020";
+      newValue = "03/07/2020";
       const dayPicker = subject.find(DayPickerInput).first();
       const input = dayPicker.find("input").first();
       input.simulate("change", { target: { value: newValue } });
