@@ -23,7 +23,6 @@ form {
 }
 
 label {
-  flex: 1;
   margin: 1rem 0;
   text-transform: capitalize;
   width: 25%;
@@ -53,4 +52,9 @@ button {
   font-weight: 600;
   padding: 0.5rem 1rem;
   transition: all 0.3s ease 0s;
+}
+
+.DayPickerInput {
+  display: flex;
+  flex: 4;
 }
