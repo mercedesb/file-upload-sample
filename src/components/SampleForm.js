@@ -5,6 +5,7 @@ import { DateInput } from "./DateInput";
 
 export function SampleForm(props) {
   const [taskId, setTaskId] = useState("");
+  const [mileage, setMileage] = useState("");
   const [collectedDate, setCollectedDate] = useState(null);
   const imageTifInput = useRef(null);
   const indexedTifInput = useRef(null);
@@ -43,7 +44,9 @@ export function SampleForm(props) {
       the file itself, 
       and an optional third argument for the filename. 
     */
+
     const formData = new FormData();
+    formData.append("mileage", mileage);
     formData.append("collectedDate", collectedDate);
 
     const imageTif = imageTifInput.current.files[0];
@@ -70,7 +73,13 @@ export function SampleForm(props) {
           Authorization: `Token ${process.env.REACT_APP_AUTHORIZATION_TOKEN}`,
         },
       }
-    );
+    ).then((response) => {
+      if (response.ok) {
+        alert("Files successfully uploaded");
+      } else {
+        alert("Something went wrong");
+      }
+    });
   };
 
   return (
@@ -80,6 +89,12 @@ export function SampleForm(props) {
         value={taskId}
         placeholder="whatevs"
         onChange={(e) => setTaskId(e.target.value)}
+      />
+      <TextInput
+        name="mileage"
+        value={mileage}
+        placeholder="123.44"
+        onChange={(e) => setMileage(e.target.value)}
       />
       <DateInput
         name="collectedDate"
